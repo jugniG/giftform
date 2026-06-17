@@ -135,7 +135,7 @@ function LoginPage() {
             <Button
               variant="bordered"
               fullWidth
-              startContent={googleLoading ? <Spinner size="sm" /> : <GoogleLogo />}
+              startContent={<GoogleLogo />}
               isLoading={googleLoading}
               isDisabled={isSubmitting}
               onPress={handleGoogle}
