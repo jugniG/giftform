@@ -14,6 +14,33 @@ model Todo {
   createdAt DateTime @default(now())
 }
 
+enum SubscriptionStatus {
+  active
+  cancelled
+  expired
+  on_hold
+}
+
+model Subscription {
+  id                    String             @id @default(cuid())
+  userId                String
+  user                  User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dodoSubscriptionId    String             @unique
+  dodoCustomerId        String?
+  productId             String
+  status                SubscriptionStatus @default(active)
+  planId                String             @default("starter") // 'starter' | 'pro' | 'team'
+  billingInterval       String             @default("monthly") // 'monthly' | 'annual'
+  currentPeriodEnd      DateTime?
+  cancelAtNextBilling   Boolean            @default(false)
+  trialEndsAt           DateTime?
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  @@index([userId])
+  @@map("subscription")
+}
+
 model User {
   id            String    @id
   name          String
@@ -24,6 +51,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  subscriptions Subscription[]
 
   @@unique([email])
   @@map("user")

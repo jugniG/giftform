@@ -10,19 +10,26 @@ import {
   DropdownItem,
   DropdownSection,
 } from '@heroui/react'
-import { RiDashboardLine, RiLogoutBoxLine, RiSettingsLine, RiUserLine } from 'react-icons/ri'
+import {
+  RiDashboardLine,
+  RiLogoutBoxLine,
+  RiSettingsLine,
+  RiUserLine,
+  RiPriceTag3Line,
+} from 'react-icons/ri'
 import { authClient } from '#/lib/auth-client'
+import { getSession } from '#/lib/session'
 
 // ---------------------------------------------------------------------------
 // Auth guard — redirect to /login if no session
 // ---------------------------------------------------------------------------
 export const Route = createFileRoute('/_protected')({
   beforeLoad: async () => {
-    const session = await authClient.getSession()
-    if (!session?.data?.user) {
+    const session = await getSession()
+    if (!session?.user) {
       throw redirect({ to: '/login' })
     }
-    return { user: session.data.user }
+    return { user: session.user }
   },
   component: ProtectedLayout,
 })
@@ -146,6 +153,13 @@ function ProtectedLayout() {
                   onPress={() => router.navigate({ to: '/dashboard' })}
                 >
                   Dashboard
+                </DropdownItem>
+                <DropdownItem
+                  key="pricing"
+                  startContent={<RiPriceTag3Line className="text-base text-gray-500" />}
+                  onPress={() => router.navigate({ to: '/pricing' })}
+                >
+                  Pricing
                 </DropdownItem>
                 <DropdownItem
                   key="profile"
