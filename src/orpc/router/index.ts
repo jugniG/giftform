@@ -6,6 +6,15 @@ import {
   cancelSubscription,
   resumeSubscription,
 } from './payments'
+import {
+  listUserForms,
+  createForm,
+  getForm,
+  updateFormFields,
+  deleteForm,
+  submitFormResponse,
+  getFormSubmissions,
+} from './forms'
 
 export default {
   listTodos,
@@ -16,5 +25,14 @@ export default {
     createCheckout,
     cancelSubscription,
     resumeSubscription,
+  },
+  forms: {
+    listUserForms,
+    createForm,
+    getForm,
+    updateFormFields,
+    deleteForm,
+    submitFormResponse,
+    getFormSubmissions,
   },
 }

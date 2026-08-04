@@ -1,5 +1,6 @@
 import { createFileRoute, useRouter } from '@tanstack/react-router'
-import { Card, CardBody, CardHeader, Chip, Button, Spinner } from '@heroui/react'
+import { Card, CardBody, CardHeader, Chip, Spinner } from '@heroui/react'
+import { Button } from '#/components/Button'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { orpc } from '#/orpc/client'
 import { PLANS, PLAN_RANK } from '#/lib/payments/plans'
@@ -40,7 +41,7 @@ function BillingPage() {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
         <h1 className="text-2xl font-bold text-gray-900">No active subscription</h1>
-        <p className="mt-2 text-gray-500">Pick a plan to start using Driz Pro.</p>
+        <p className="mt-2 text-gray-500">Pick a plan to start using GiftForm Pro.</p>
         <Button color="primary" className="mt-6" onPress={() => router.navigate({ to: '/pricing' })}>
           View pricing
         </Button>
@@ -54,7 +55,7 @@ function BillingPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <h1 className="mb-1 text-2xl font-bold text-gray-900">Billing</h1>
-      <p className="mb-8 text-sm text-gray-500">Manage your Driz subscription.</p>
+      <p className="mb-8 text-sm text-gray-500">Manage your GiftForm subscription.</p>
 
       {/* Current plan */}
       <Card className="mb-8 bg-white">

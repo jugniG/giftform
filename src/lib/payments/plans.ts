@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Plan definitions for the Driz demo product.
+// Plan definitions for the GiftForm demo product.
 //
 // Prices shown here are the DISPLAY prices on the pricing page. The actual
 // amounts charged are driven by the Dodo product created server-side (see
@@ -32,7 +32,7 @@ export const PLANS: Plan[] = [
   {
     id: 'starter',
     name: 'Starter',
-    tagline: 'For trying out Driz on a small project.',
+    tagline: 'For trying out GiftForm on a small project.',
     monthlyPrice: 9,
     annualPrice: 7,
     // TODO: create these products in the Dodo dashboard and paste the IDs

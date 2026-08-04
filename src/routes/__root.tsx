@@ -17,6 +17,11 @@ interface MyRouterContext {
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
+  notFoundComponent: () => (
+    <div className="flex h-screen items-center justify-center font-sans text-lg text-gray-600">
+      Page Not Found
+    </div>
+  ),
   head: () => ({
     meta: [
       {
@@ -27,7 +32,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'GiftForm',
       },
     ],
     links: [
@@ -46,7 +51,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <TanStackDevtools
           config={{

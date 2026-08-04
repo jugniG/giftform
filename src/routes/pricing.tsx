@@ -1,7 +1,8 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Card, CardBody, CardHeader, Chip, Button, Spinner } from '@heroui/react'
-import { RiCheckLine, RiVipCrownLine } from 'react-icons/ri'
+import { Card, CardBody, CardHeader, Chip, Spinner } from '@heroui/react'
+import { Button } from '#/components/Button'
+import { RiCheckLine, RiVipCrownLine, RiGiftFill } from 'react-icons/ri'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { orpc } from '#/orpc/client'
 import { authClient } from '#/lib/auth-client'
@@ -70,11 +71,14 @@ function PricingPage() {
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       {/* Header */}
       <div className="mb-12 text-center">
+        <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-amber-500 text-white shadow-lg">
+          <RiGiftFill className="text-2xl" />
+        </span>
         <Chip color="primary" variant="flat" className="mb-4">
           7-day free trial · No credit card required
         </Chip>
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-          Simple pricing for Driz
+          Simple pricing for GiftForm
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-gray-500">
           Start free, upgrade when you're ready. Every plan includes a 7-day trial.

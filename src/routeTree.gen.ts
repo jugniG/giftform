@@ -13,12 +13,15 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OffersFormIdRouteImport } from './routes/offers/$formId'
 import { Route as ApiSplatRouteImport } from './routes/api.$'
 import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
 import { Route as ProtectedBillingRouteImport } from './routes/_protected/billing'
 import { Route as ApiWebhookDodoRouteImport } from './routes/api/webhook/dodo'
 import { Route as ApiRpcSplatRouteImport } from './routes/api.rpc.$'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ProtectedFormsFormIdIndexRouteImport } from './routes/_protected/forms/$formId/index'
+import { Route as ProtectedFormsFormIdResponsesRouteImport } from './routes/_protected/forms/$formId/responses'
 
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
@@ -37,6 +40,11 @@ const ProtectedRoute = ProtectedRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersFormIdRoute = OffersFormIdRouteImport.update({
+  id: '/offers/$formId',
+  path: '/offers/$formId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiSplatRoute = ApiSplatRouteImport.update({
@@ -69,6 +77,18 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProtectedFormsFormIdIndexRoute =
+  ProtectedFormsFormIdIndexRouteImport.update({
+    id: '/forms/$formId/',
+    path: '/forms/$formId/',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedFormsFormIdResponsesRoute =
+  ProtectedFormsFormIdResponsesRouteImport.update({
+    id: '/forms/$formId/responses',
+    path: '/forms/$formId/responses',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,9 +97,12 @@ export interface FileRoutesByFullPath {
   '/billing': typeof ProtectedBillingRoute
   '/dashboard': typeof ProtectedDashboardRoute
   '/api/$': typeof ApiSplatRoute
+  '/offers/$formId': typeof OffersFormIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/webhook/dodo': typeof ApiWebhookDodoRoute
+  '/forms/$formId/responses': typeof ProtectedFormsFormIdResponsesRoute
+  '/forms/$formId/': typeof ProtectedFormsFormIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -88,9 +111,12 @@ export interface FileRoutesByTo {
   '/billing': typeof ProtectedBillingRoute
   '/dashboard': typeof ProtectedDashboardRoute
   '/api/$': typeof ApiSplatRoute
+  '/offers/$formId': typeof OffersFormIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/webhook/dodo': typeof ApiWebhookDodoRoute
+  '/forms/$formId/responses': typeof ProtectedFormsFormIdResponsesRoute
+  '/forms/$formId': typeof ProtectedFormsFormIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,9 +127,12 @@ export interface FileRoutesById {
   '/_protected/billing': typeof ProtectedBillingRoute
   '/_protected/dashboard': typeof ProtectedDashboardRoute
   '/api/$': typeof ApiSplatRoute
+  '/offers/$formId': typeof OffersFormIdRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/api/webhook/dodo': typeof ApiWebhookDodoRoute
+  '/_protected/forms/$formId/responses': typeof ProtectedFormsFormIdResponsesRoute
+  '/_protected/forms/$formId/': typeof ProtectedFormsFormIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -114,9 +143,12 @@ export interface FileRouteTypes {
     | '/billing'
     | '/dashboard'
     | '/api/$'
+    | '/offers/$formId'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/webhook/dodo'
+    | '/forms/$formId/responses'
+    | '/forms/$formId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -125,9 +157,12 @@ export interface FileRouteTypes {
     | '/billing'
     | '/dashboard'
     | '/api/$'
+    | '/offers/$formId'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/webhook/dodo'
+    | '/forms/$formId/responses'
+    | '/forms/$formId'
   id:
     | '__root__'
     | '/'
@@ -137,9 +172,12 @@ export interface FileRouteTypes {
     | '/_protected/billing'
     | '/_protected/dashboard'
     | '/api/$'
+    | '/offers/$formId'
     | '/api/auth/$'
     | '/api/rpc/$'
     | '/api/webhook/dodo'
+    | '/_protected/forms/$formId/responses'
+    | '/_protected/forms/$formId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -148,6 +186,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
   ApiSplatRoute: typeof ApiSplatRoute
+  OffersFormIdRoute: typeof OffersFormIdRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute
   ApiWebhookDodoRoute: typeof ApiWebhookDodoRoute
@@ -181,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers/$formId': {
+      id: '/offers/$formId'
+      path: '/offers/$formId'
+      fullPath: '/offers/$formId'
+      preLoaderRoute: typeof OffersFormIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/$': {
@@ -225,17 +271,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_protected/forms/$formId/': {
+      id: '/_protected/forms/$formId/'
+      path: '/forms/$formId'
+      fullPath: '/forms/$formId/'
+      preLoaderRoute: typeof ProtectedFormsFormIdIndexRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/forms/$formId/responses': {
+      id: '/_protected/forms/$formId/responses'
+      path: '/forms/$formId/responses'
+      fullPath: '/forms/$formId/responses'
+      preLoaderRoute: typeof ProtectedFormsFormIdResponsesRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
   }
 }
 
 interface ProtectedRouteChildren {
   ProtectedBillingRoute: typeof ProtectedBillingRoute
   ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedFormsFormIdResponsesRoute: typeof ProtectedFormsFormIdResponsesRoute
+  ProtectedFormsFormIdIndexRoute: typeof ProtectedFormsFormIdIndexRoute
 }
 
 const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedBillingRoute: ProtectedBillingRoute,
   ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedFormsFormIdResponsesRoute: ProtectedFormsFormIdResponsesRoute,
+  ProtectedFormsFormIdIndexRoute: ProtectedFormsFormIdIndexRoute,
 }
 
 const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
@@ -248,6 +312,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
   ApiSplatRoute: ApiSplatRoute,
+  OffersFormIdRoute: OffersFormIdRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
   ApiWebhookDodoRoute: ApiWebhookDodoRoute,
