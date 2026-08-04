@@ -16,8 +16,8 @@ import {
   RiSettingsLine,
   RiUserLine,
   RiPriceTag3Line,
-  RiGiftFill,
 } from 'react-icons/ri'
+import { Logo } from '#/components/Logo'
 import { authClient } from '#/lib/auth-client'
 import { getSession } from '#/lib/session'
 
@@ -71,16 +71,9 @@ function ProtectedLayout() {
           wrapper: 'mx-auto max-w-6xl px-4 sm:px-6',
         }}
       >
-        {/* Brand */}
+        {/* Brand — click to dashboard */}
         <NavbarBrand>
-          <span className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-amber-500 text-white shadow-sm">
-              <RiGiftFill className="text-base" />
-            </span>
-            <span className="text-lg font-bold tracking-tight text-gray-900">
-              GiftForm
-            </span>
-          </span>
+          <Logo to="/dashboard" size="sm" />
         </NavbarBrand>
 
         {/* Right — user dropdown */}
@@ -94,8 +87,8 @@ function ProtectedLayout() {
                   name={initials}
                   size="sm"
                   classNames={{
-                    base: 'shrink-0 bg-indigo-100',
-                    name: 'text-indigo-700 text-xs font-semibold',
+                    base: 'shrink-0 bg-rose-100',
+                    name: 'text-rose-700 text-xs font-semibold',
                   }}
                 />
                 <span className="hidden text-sm font-medium text-gray-800 sm:block">
