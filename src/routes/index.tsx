@@ -8,11 +8,12 @@ import {
   RiEyeLine,
   RiEdit2Line,
   RiShareForwardLine,
+  RiLockLine,
+  RiSpyLine,
 } from 'react-icons/ri'
 
 export const Route = createFileRoute('/')({ component: Home })
 
-// ─── Scroll reveal hook ──────────────────────────────────────────────────────
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll('[data-reveal]')
@@ -32,72 +33,25 @@ function useReveal() {
   }, [])
 }
 
-const stats = [
-  { value: '₹2.4 Cr', label: 'prizes claimed to date' },
-  { value: '38K+', label: 'entries collected' },
-  { value: '4 min', label: 'to build your first draw' },
+const useCases = [
+  { emoji: '🎂', label: 'Birthday surprise planning' },
+  { emoji: '🎅', label: 'Secret Santa preferences' },
+  { emoji: '💘', label: 'Crush recon mission' },
+  { emoji: '😈', label: 'Prank your friends' },
 ]
-
-const features = [
-  {
-    icon: RiGiftFill,
-    title: 'Lucky-draw that looks real',
-    desc: 'Publish a festive offer page with genuine brand styling — winners are picked at random, no fake promises.',
-    tint: 'from-rose-500 to-amber-500',
-  },
-  {
-    icon: RiEdit2Line,
-    title: 'Tweak every input',
-    desc: 'Add fields, make them optional, reorder questions. The email field stays locked and required — always.',
-    tint: 'from-indigo-500 to-cyan-400',
-  },
-  {
-    icon: RiShareForwardLine,
-    title: 'One link, infinite entries',
-    desc: 'Share a clean /offers/:id link. No sign-up for your participants — they just fill it and enter.',
-    tint: 'from-emerald-500 to-teal-500',
-  },
-  {
-    icon: RiEyeLine,
-    title: 'Watch responses land live',
-    desc: 'Every submission streams into a tidy table. Export, filter, and see exactly what your page collected.',
-    tint: 'from-fuchsia-500 to-pink-500',
-  },
-] as const
-
-const steps = [
-  {
-    n: '01',
-    icon: RiSparkling2Line,
-    title: 'Pick your preset',
-    desc: 'Start from a ready-made Amazon-style offer template with default inputs.',
-  },
-  {
-    n: '02',
-    icon: RiEdit2Line,
-    title: 'Shape the form',
-    desc: 'Add fields, swap types, make them optional. Your brand page, your rules.',
-  },
-  {
-    n: '03',
-    icon: RiShareForwardLine,
-    title: 'Share & collect',
-    desc: 'Drop the link anywhere. Entries land in your dashboard in real time.',
-  },
-] as const
 
 function Home() {
   useReveal()
 
   return (
     <div className="min-h-screen overflow-x-clip bg-gray-50 text-gray-900 antialiased">
-      {/* Nav — floating pill */}
+      {/* Nav */}
       <nav className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
         <div className="flex w-full max-w-xl items-center justify-between rounded-full border border-gray-200 bg-white/80 px-4 py-2 shadow-lg shadow-gray-900/5 backdrop-blur-md">
           <Logo to="/" />
           <div className="hidden items-center gap-6 text-sm font-medium text-gray-600 sm:flex">
             <a href="#how" className="transition hover:text-gray-900">How it works</a>
-            <a href="#features" className="transition hover:text-gray-900">Features</a>
+            <a href="#usecases" className="transition hover:text-gray-900">Use cases</a>
           </div>
           <Link
             to="/dashboard"
@@ -108,49 +62,48 @@ function Home() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 py-28 text-center">
-        <div
-          aria-hidden
-          className="absolute left-1/2 top-1/2 -z-10 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose-200/40 blur-[120px]"
-        />
-        <div
-          aria-hidden
-          className="absolute -z-10 h-[380px] w-[380px] translate-x-[-28%] translate-y-[-10%] rounded-full bg-amber-200/40 blur-[100px]"
-        />
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      {/* Hero                                                              */}
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-28 pb-16 text-center">
+        {/* Ambient glow */}
+        <div aria-hidden className="absolute left-1/2 top-1/3 -z-10 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-rose-200/40 blur-[120px]" />
+        <div aria-hidden className="absolute -z-10 h-[380px] w-[380px] translate-x-[20%] translate-y-[-5%] rounded-full bg-amber-200/30 blur-[100px]" />
 
         <span
           data-reveal
           className="mb-5 inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-1.5 text-sm font-medium text-rose-600"
         >
-          <RiSparkling2Line className="text-base" />
-          Dummy offer pages · 100% safe &amp; playful
+          <RiSpyLine className="text-base" />
+          The sneakiest form builder on the internet
         </span>
 
         <h1
           data-reveal
-          className="max-w-3xl text-balance text-[clamp(2.6rem,7.5vw,5rem)] font-extrabold leading-[1.05] tracking-tight text-gray-900"
+          className="max-w-3xl text-balance text-[clamp(2.4rem,7vw,4.5rem)] font-extrabold leading-[1.08] tracking-tight text-gray-900"
         >
-          Build a lucky&nbsp;draw page people{' '}
+          Get answers{' '}
           <span className="bg-gradient-to-r from-rose-500 to-amber-500 bg-clip-text text-transparent">
-            actually believe
-          </span>
+            without asking
+          </span>{' '}
+          the question
         </h1>
 
         <p
           data-reveal
           className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-gray-500"
         >
-          GiftForm lets you spin up a realistic Amazon-style festival offer, collect entries in
-          real time, and watch responses roll in — without ever promising anyone a real prize.
+          You want to know their favorite color, cake flavor, shoe size —
+          but you can't just <em>ask</em>. Wrap your questions inside a
+          believable offer page, share the link, and read their answers.
         </p>
 
         <div data-reveal className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
           <Link
             to="/dashboard"
-            className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-7 py-3.5 text-base font-bold text-white shadow-xl shadow-rose-500/30 transition hover:shadow-rose-500/50"
+            className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-7 py-3.5 text-base font-bold text-white shadow-xl shadow-rose-500/25 transition hover:shadow-rose-500/40"
           >
-            Create your first draw
+            Build your first form
             <RiArrowRightLine className="transition-transform group-hover:translate-x-1" />
           </Link>
           <a
@@ -161,60 +114,109 @@ function Home() {
           </a>
         </div>
 
-        {/* Proof visual — a real-looking offer page card */}
-        <div
-          data-reveal
-          className="mt-16 w-full max-w-md -rotate-1 rounded-3xl border border-gray-200 bg-white p-5 shadow-2xl shadow-gray-900/10 transition-transform duration-500 hover:rotate-0"
-        >
-          <div className="mb-3 flex items-center justify-between">
-            <img src="/az-logo.png" alt="Amazon" className="h-6 w-auto" />
-            <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[11px] font-bold text-amber-700">
-              FESTIVE SEASON
-            </span>
-          </div>
-          <img src="/amazon-prizes.png" alt="Prizes up for grabs" className="h-36 w-full rounded-xl object-cover" />
-          <div className="mt-4 grid grid-cols-2 gap-3 rounded-xl border border-gray-100 bg-gray-50 p-3">
-            <div className="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-gray-700">
-              Email Address
+        {/* ── Split proof: what THEY see vs what YOU see ────────────────── */}
+        <div data-reveal className="mt-16 w-full max-w-3xl">
+          <div className="grid gap-4 md:grid-cols-2">
+            {/* Left — what they see */}
+            <div className="relative rounded-2xl border border-gray-200 bg-white p-4 shadow-xl shadow-gray-900/5">
+              <span className="absolute -top-3 left-4 rounded-full bg-amber-100 px-3 py-0.5 text-xs font-bold text-amber-700">
+                What they see
+              </span>
+              <div className="mb-3 flex items-center gap-2">
+                <img src="/az-logo.png" alt="Amazon" className="h-5 w-auto" />
+                <span className="text-[10px] font-semibold text-gray-400">Great Indian Festival</span>
+              </div>
+              <img src="/amazon-prizes.png" alt="Prizes" className="h-28 w-full rounded-lg object-cover" />
+              <div className="mt-3 space-y-2">
+                <div className="rounded-md bg-gray-100 px-3 py-2 text-xs text-gray-500">📧 Email Address</div>
+                <div className="rounded-md bg-gray-100 px-3 py-2 text-xs text-gray-500">🎂 What's your favorite cake flavor?</div>
+                <div className="rounded-md bg-gray-100 px-3 py-2 text-xs text-gray-500">🎨 Pick a color</div>
+                <div className="rounded-md bg-gradient-to-r from-rose-500 to-amber-500 py-2 text-center text-xs font-bold text-white">
+                  Submit Entry for Lucky Draw
+                </div>
+              </div>
             </div>
-            <div className="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-gray-700">
-              Full Name
-            </div>
-            <div className="col-span-2 rounded-lg bg-gradient-to-r from-rose-500 to-amber-500 py-2.5 text-center text-sm font-bold text-white">
-              Submit Entry for Lucky Draw
+
+            {/* Right — what you see */}
+            <div className="relative rounded-2xl border border-gray-200 bg-white p-4 shadow-xl shadow-gray-900/5">
+              <span className="absolute -top-3 left-4 rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-bold text-emerald-700">
+                What you see
+              </span>
+              <div className="mb-3 text-sm font-bold text-gray-900">📊 Responses Dashboard</div>
+              <div className="overflow-hidden rounded-lg border border-gray-100">
+                <table className="w-full text-left text-[11px]">
+                  <thead className="bg-gray-50 text-gray-500">
+                    <tr>
+                      <th className="px-3 py-2">Email</th>
+                      <th className="px-3 py-2">Cake</th>
+                      <th className="px-3 py-2">Color</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 text-gray-800 font-medium">
+                    <tr>
+                      <td className="px-3 py-2">priya@gmail.com</td>
+                      <td className="px-3 py-2">Red Velvet 🍰</td>
+                      <td className="px-3 py-2">Lavender 💜</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2">amit@yahoo.com</td>
+                      <td className="px-3 py-2">Chocolate</td>
+                      <td className="px-3 py-2">Blue</td>
+                    </tr>
+                    <tr>
+                      <td className="px-3 py-2">sneha@icloud.com</td>
+                      <td className="px-3 py-2">Butterscotch</td>
+                      <td className="px-3 py-2">Mint Green</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="mt-3 flex items-center justify-between rounded-lg bg-emerald-50 px-3 py-2">
+                <span className="text-xs font-semibold text-emerald-700">3 submissions</span>
+                <span className="text-[10px] text-emerald-600">Now you know her favorites 😏</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats strip */}
-      <section className="border-y border-gray-200 bg-white px-6 py-14">
-        <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-8 sm:flex-row">
-          {stats.map((s) => (
-            <div key={s.label} data-reveal className="text-center sm:text-left">
-              <div className="text-4xl font-extrabold tracking-tight text-rose-500">{s.value}</div>
-              <div className="mt-1 text-sm text-gray-500">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* How it works — numbered steps */}
-      <section id="how" className="px-6 py-24">
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      {/* How it works                                                      */}
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      <section id="how" className="border-t border-gray-200 bg-white px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <span data-reveal className="text-sm font-semibold uppercase tracking-widest text-rose-500">
             How it works
           </span>
           <h2 data-reveal className="mt-3 max-w-xl text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
-            3 steps from idea to live draw
+            3 steps. Zero suspicion.
           </h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {steps.map((step) => (
+            {[
+              {
+                n: '01',
+                icon: RiEdit2Line,
+                title: 'Disguise your questions',
+                desc: 'Pick the Amazon offer preset. Swap in your real questions — "favorite cake?", "pick a color" — they blend right in.',
+              },
+              {
+                n: '02',
+                icon: RiShareForwardLine,
+                title: 'Share the link',
+                desc: 'Send the /offers/ link to your target. They see a legit-looking lucky draw page. No sign-up, no suspicion.',
+              },
+              {
+                n: '03',
+                icon: RiEyeLine,
+                title: 'Read their answers',
+                desc: 'Every submission lands in your dashboard instantly. Their favorite color, cake flavor, shoe size — all yours.',
+              },
+            ].map((step) => (
               <div
                 key={step.n}
                 data-reveal
-                className="group relative rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-rose-300 hover:shadow-lg"
+                className="group relative rounded-3xl border border-gray-200 bg-gray-50 p-7 transition hover:-translate-y-1 hover:border-rose-300 hover:bg-white hover:shadow-lg"
               >
                 <span className="text-5xl font-extrabold text-gray-100 transition group-hover:text-rose-200">
                   {step.n}
@@ -228,54 +230,97 @@ function Home() {
         </div>
       </section>
 
-      {/* Features — bento */}
-      <section id="features" className="border-t border-gray-200 bg-white px-6 py-24">
-        <div className="mx-auto max-w-6xl">
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      {/* Use cases                                                         */}
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      <section id="usecases" className="px-6 py-24">
+        <div className="mx-auto max-w-4xl text-center">
           <span data-reveal className="text-sm font-semibold uppercase tracking-widest text-rose-500">
-            Features
+            Use cases
           </span>
-          <h2 data-reveal className="mt-3 max-w-xl text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
-            Everything you need to run the fun
+          <h2 data-reveal className="mt-3 text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
+            For every time you can't just ask
           </h2>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {features.map((f) => (
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {useCases.map((uc) => (
               <div
-                key={f.title}
+                key={uc.label}
                 data-reveal
-                className="group rounded-3xl border border-gray-200 bg-gray-50 p-8 transition hover:border-gray-300 hover:bg-white hover:shadow-lg"
+                className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-6 text-left shadow-sm transition hover:border-rose-300 hover:shadow-md"
               >
-                <span
-                  className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${f.tint} text-white shadow-lg`}
-                >
-                  <f.icon className="text-2xl" />
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-rose-50 text-2xl">
+                  {uc.emoji}
                 </span>
-                <h3 className="text-xl font-bold text-gray-900">{f.title}</h3>
-                <p className="mt-2 max-w-md leading-relaxed text-gray-500">{f.desc}</p>
+                <span className="text-base font-semibold text-gray-900">{uc.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      {/* Features — compact                                                */}
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      <section className="border-t border-gray-200 bg-white px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <span data-reveal className="text-sm font-semibold uppercase tracking-widest text-rose-500">
+            Under the hood
+          </span>
+          <h2 data-reveal className="mt-3 max-w-lg text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
+            Looks real. Works fast. Stays private.
+          </h2>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                icon: RiSparkling2Line,
+                title: 'Amazon-grade preset',
+                desc: 'Festival branding, prize banners, and styled inputs out of the box.',
+              },
+              {
+                icon: RiLockLine,
+                title: 'Email always captured',
+                desc: 'The email field is locked, required, and can\'t be removed by anyone.',
+              },
+              {
+                icon: RiEyeLine,
+                title: 'Live response table',
+                desc: 'See every submission the moment it lands. No refresh needed.',
+              },
+            ].map((f) => (
+              <div
+                key={f.title}
+                data-reveal
+                className="rounded-2xl border border-gray-200 bg-gray-50 p-6 transition hover:bg-white hover:shadow-md"
+              >
+                <f.icon className="h-7 w-7 text-rose-500" />
+                <h3 className="mt-3 text-base font-bold text-gray-900">{f.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-gray-500">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════════ */}
+      {/* CTA                                                               */}
+      {/* ════════════════════════════════════════════════════════════════════ */}
       <section className="px-6 py-24">
         <div
           data-reveal
-          className="mx-auto max-w-4xl rounded-[2.5rem] border border-rose-200 bg-gradient-to-br from-rose-50 via-white to-amber-50 px-6 py-20 text-center"
+          className="mx-auto max-w-3xl rounded-[2.5rem] border border-rose-200 bg-gradient-to-br from-rose-50 via-white to-amber-50 px-6 py-20 text-center"
         >
           <RiGiftFill className="mx-auto h-10 w-10 text-rose-500" />
-          <h2 className="mt-5 text-balance text-4xl font-extrabold leading-tight tracking-tight text-gray-900">
-            Ready to run an offer that looks real?
+          <h2 className="mt-5 text-balance text-3xl font-extrabold leading-tight tracking-tight text-gray-900">
+            You already know what you want to find out.
+            <br />
+            <span className="text-gray-400">Now wrap it in a form they'll actually fill.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-gray-500">
-            Spin up a festive draw, share the link, and watch entries land. Completely free to start.
-          </p>
           <Link
             to="/dashboard"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-rose-500/30 transition hover:shadow-rose-500/50"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 px-8 py-3.5 text-base font-bold text-white shadow-xl shadow-rose-500/25 transition hover:shadow-rose-500/40"
           >
-            Start building free <RiArrowRightLine />
+            Build your first form <RiArrowRightLine />
           </Link>
         </div>
       </section>
@@ -285,7 +330,7 @@ function Home() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
           <Logo to="/" size="sm" />
           <p className="text-xs text-gray-400">
-            Playful dummy pages for fun &amp; demo. No real prizes, promise. 🎈
+            Sneaky forms for sweet reasons. No real prizes, promise. 🎈
           </p>
         </div>
       </footer>
