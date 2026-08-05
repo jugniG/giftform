@@ -35,7 +35,7 @@ export const Route = createFileRoute('/login')({
 })
 
 // ---------------------------------------------------------------------------
-// Google brand logo (four-color SVG — no react-icons equivalent)
+// Google brand logo (four-color SVG - no react-icons equivalent)
 // ---------------------------------------------------------------------------
 function GoogleLogo() {
   return (
@@ -101,7 +101,7 @@ function LoginPage() {
             <p className="text-sm text-default-500">
               We sent a magic link to{' '}
               <span className="font-medium text-default-800">{sentTo}</span>.
-              Click the link to sign in — it expires in 10 minutes.
+              Click the link to sign in - it expires in 10 minutes.
             </p>
             <Button
               variant="light"

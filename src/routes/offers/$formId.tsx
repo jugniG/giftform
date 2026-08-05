@@ -98,7 +98,7 @@ function PublicAmazonFormPage() {
           <div className="mx-auto mt-4 max-w-md overflow-hidden rounded-lg border border-amber-200 bg-white/70 shadow-sm">
             <img
               src="/amazon-prizes.png"
-              alt="Prizes up for grabs — iPhone 15 Pro, ₹10,000 Amazon Pay Balance, Sony headphones"
+              alt="Prizes up for grabs - iPhone 15 Pro, ₹10,000 Amazon Pay Balance, Sony headphones"
               className="w-full object-cover"
             />
             <div className="p-4 text-left">
@@ -117,7 +117,7 @@ function PublicAmazonFormPage() {
                 </li>
               </ul>
               <p className="mt-2 border-t border-amber-100 pt-2 text-center text-[10px] text-gray-500">
-                Lucky draw — winners selected at random and notified via email / SMS.
+                Lucky draw - winners selected at random and notified via email / SMS.
               </p>
             </div>
           </div>

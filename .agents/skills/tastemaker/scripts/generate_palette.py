@@ -220,7 +220,7 @@ def main():
     p = generate(args.mood, args.mode, rng)
     r = p["roles"]
 
-    print(f"# Generated palette — {p['mood']} / {p['mode']} / {p['harmony']} harmony "
+    print(f"# Generated palette - {p['mood']} / {p['mode']} / {p['harmony']} harmony "
           f"(base hue {p['base_hue']}, accent hue {p['accent_hue']})")
     print()
     for name in ("text", "bg", "surface", "primary", "on-primary", "secondary", "accent", "border"):

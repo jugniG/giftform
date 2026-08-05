@@ -7,7 +7,7 @@ them.
 This is the linchpin of using real unDraw art on-brand. unDraw draws every
 illustration around one accent hue (`#6c63ff`, a purple) plus a fixed set of
 neutrals and skin tones. To put an illustration on a brand, you swap ONLY the
-accent — not skin, not the dark ink, not the greys. A naive "recolor every
+accent - not skin, not the dark ink, not the greys. A naive "recolor every
 non-black fill" (see recolor_svg.py) would tint skin and shadows too and ruin
 it; this targets the accent family specifically.
 
@@ -18,7 +18,7 @@ What it swaps by default (the unDraw accent family):
 
 What it preserves (never touched):
     #090814 ink, #2f2e41/#3f3d56/#3f3d58 dark clothing, #e6e6e6/#d6d6e3 greys,
-    #ed9da0 and other skin tones, white — the whole rest of the illustration.
+    #ed9da0 and other skin tones, white - the whole rest of the illustration.
 
 Usage:
     python3 recolor_undraw.py illo.svg --accent "#0FB5A8"
@@ -33,7 +33,7 @@ import re
 import argparse
 import colorsys
 
-# unDraw's accent family — the purple that defines each illustration's "pop".
+# unDraw's accent family - the purple that defines each illustration's "pop".
 # Case-insensitive; matched anywhere (fill=, stroke=, stop-color=, gradients).
 UNDRAW_ACCENTS = ["#6c63ff", "#6c63fe", "#5c53ef", "#4e46c9"]
 
@@ -103,7 +103,7 @@ def main():
 
     out = args.out or args.svg
     open(out, "w").write(new_text)
-    print(f"[ok] {out} — swapped {changed} accent occurrence(s) to {args.accent}; "
+    print(f"[ok] {out} - swapped {changed} accent occurrence(s) to {args.accent}; "
           "skin, hair, clothing and neutrals left untouched.")
 
 

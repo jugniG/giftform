@@ -1,5 +1,5 @@
 /*
-  Tastemaker GSAP starter — the default motion system for generated sites.
+  Tastemaker GSAP starter - the default motion system for generated sites.
 
   Requires GSAP + ScrollTrigger to already be loaded (see
   references/tech-stack-guides.md for the CDN <script> tags or npm install
@@ -12,7 +12,7 @@
     <script src="gsap-starter.js"></script>
     <script>
       TastemakerMotion.init({
-        duration: 0.22,       // seconds — match .tastemaker/style-lock.md's Motion section
+        duration: 0.22,       // seconds - match .tastemaker/style-lock.md's Motion section
         distance: 16,         // px
         ease: "power3.out",
         staggerStep: 0.06,    // seconds between staggered children
@@ -38,7 +38,7 @@
       gsap.registerPlugin(ScrollTrigger);
     }
 
-    // gsap.matchMedia is the idiomatic way to branch on prefers-reduced-motion —
+    // gsap.matchMedia is the idiomatic way to branch on prefers-reduced-motion -
     // the "reduce" context runs a near-instant, non-animated version instead of
     // skipping motion setup entirely (so layout/opacity end state is still correct).
     var mm = gsap.matchMedia();

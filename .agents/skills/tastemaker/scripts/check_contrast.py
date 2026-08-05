@@ -7,7 +7,7 @@ Why this exists: a palette (whether hand-picked, extracted from a reference
 image, or a user-supplied brand color) can look fine as a swatch and still
 fail contrast once it's actually used as text-on-background or a button
 label. The easiest miss is checking body-text-on-background and stopping
-there — a Primary/Accent color can pass that check and still be illegible
+there - a Primary/Accent color can pass that check and still be illegible
 as a button fill with white label text. This script checks pairs directly
 against the real WCAG math instead of eyeballing it.
 
@@ -65,7 +65,7 @@ def ratio(hex1, hex2):
 def report(label, hex1, hex2, floor=AA_NORMAL):
     r = ratio(hex1, hex2)
     status = "PASS" if r >= floor else "FAIL"
-    print(f"[{status}] {label}: {r:.2f}:1 (floor {floor}:1) — #{hex1.lstrip('#')} vs #{hex2.lstrip('#')}")
+    print(f"[{status}] {label}: {r:.2f}:1 (floor {floor}:1) - #{hex1.lstrip('#')} vs #{hex2.lstrip('#')}")
     return r >= floor
 
 
@@ -144,11 +144,11 @@ def main():
             white_ok = report("white label / primary fill", "ffffff", roles["primary"], AA_NORMAL)
             dark_ok = report(f"dark text ({roles['text']}) / primary fill", roles["text"], roles["primary"], AA_NORMAL)
             if not (white_ok or dark_ok):
-                print(f"  -> NEITHER white nor {roles['text']} text is readable on primary #{roles['primary']} — darken/lighten primary, don't just pick a label color and hope.")
+                print(f"  -> NEITHER white nor {roles['text']} text is readable on primary #{roles['primary']} - darken/lighten primary, don't just pick a label color and hope.")
             all_pass &= (white_ok or dark_ok)
             all_pass &= report("primary / background (visibility, UI-component floor)", roles["primary"], roles["bg"], AA_LARGE_OR_UI)
 
-        # Accent's own role (hyperlinks, highlights, small pops — not a solid
+        # Accent's own role (hyperlinks, highlights, small pops - not a solid
         # button fill) only needs the lighter UI-component/large-text floor
         # against the background, not full text-on-fill contrast.
         if "accent" in roles:

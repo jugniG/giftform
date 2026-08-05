@@ -32,7 +32,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'GiftForm — Get answers without asking the question',
+        title: 'GiftForm - Get answers without asking the question',
       },
       {
         name: 'description',
@@ -40,7 +40,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         property: 'og:title',
-        content: 'GiftForm — Get answers without asking the question',
+        content: 'GiftForm - Get answers without asking the question',
       },
       {
         property: 'og:description',
@@ -60,7 +60,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
       {
         name: 'twitter:title',
-        content: 'GiftForm — Get answers without asking the question',
+        content: 'GiftForm - Get answers without asking the question',
       },
       {
         name: 'twitter:description',

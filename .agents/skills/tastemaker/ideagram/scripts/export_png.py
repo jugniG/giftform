@@ -9,7 +9,7 @@ for a tweet, an OG/link-preview image, or a square Instagram-style post
 without the user having to figure out dimensions themselves.
 
 Requires cairosvg (pip install cairosvg). If it's not installed, this exits
-with clear instructions rather than failing silently — the illustration
+with clear instructions rather than failing silently - the illustration
 itself (the SVG) is still fully usable directly in any browser/HTML context
 without this step.
 
@@ -46,21 +46,21 @@ def main():
     except ImportError:
         print(
             "cairosvg not installed. Run `pip install cairosvg` to enable PNG export.\n"
-            "Until then, the SVG itself is still fully usable directly — most modern "
+            "Until then, the SVG itself is still fully usable directly - most modern "
             "social platforms and every browser/CMS accept SVG natively.",
             file=sys.stderr,
         )
         sys.exit(1)
     except OSError as e:
         # The common real-world failure: the cairosvg *Python* package is
-        # installed, but its underlying native cairo library isn't — pip
+        # installed, but its underlying native cairo library isn't - pip
         # can't install that part, it's a system package.
         print(
             f"cairosvg is installed but couldn't load the native cairo library ({e}).\n"
             "Install it at the system level, then retry:\n"
             "  macOS:          brew install cairo\n"
             "  Debian/Ubuntu:  sudo apt install libcairo2\n"
-            "Until then, the SVG itself is still fully usable directly — most modern "
+            "Until then, the SVG itself is still fully usable directly - most modern "
             "social platforms and every browser/CMS accept SVG natively.",
             file=sys.stderr,
         )
@@ -86,7 +86,7 @@ def main():
 
         # Render at a scale that fits *within* the target box, preserving
         # aspect ratio, then paste centered onto a transparent canvas of the
-        # exact target size — passing output_width/output_height straight to
+        # exact target size - passing output_width/output_height straight to
         # cairosvg would stretch a square illustration into whatever aspect
         # ratio the target happens to be, which is exactly the distortion
         # this is meant to avoid.

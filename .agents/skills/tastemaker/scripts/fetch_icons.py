@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 """
-Fetch icons from Iconify's public API — attribution-free, no API key.
+Fetch icons from Iconify's public API - attribution-free, no API key.
 
 Why this is the default icon source:
   - No key, no signup, no rate-limit gymnastics: api.iconify.design is a
     free public CDN designed for exactly this kind of programmatic use.
   - 200k+ icons across permissively-licensed open sets (Lucide, Tabler,
     Material Symbols, Phosphor, etc.). None of these require attribution
-    on the finished site — so an icon never becomes a visual hindrance
+    on the finished site - so an icon never becomes a visual hindrance
     the way an attribution-required source does.
   - The API applies the color server-side, so an icon comes back already
-    tinted to the project's locked accent — one fewer recolor step.
+    tinted to the project's locked accent - one fewer recolor step.
 
 Pick ONE icon set per project and stay in it so every icon shares one
-stroke weight and corner style — mixing sets is a fast way to look
+stroke weight and corner style - mixing sets is a fast way to look
 unintentional. But "one set per project" does not mean "one set for every
 project of that mood": every "technical" project defaulting to the same
 Lucide icons is a narrower version of the same sameness the mood mapping
 was built to fix, just five buckets deep instead of one. So each mood maps
 to two candidate sets, and the choice between them varies per run the same
-way `generate_palette.py --seed` varies the palette — omit --seed for a
+way `generate_palette.py --seed` varies the palette - omit --seed for a
 fresh pick each run, pass one for a reproducible choice:
 
     premium    -> heroicons, iconoir          (clean outline, professional)
@@ -125,7 +125,7 @@ def main():
         args.icon_set = "lucide"
         print(
             "No --set or --mood given; defaulting to 'lucide'. This is how every project ends up with the same "
-            "icons — pass --mood <premium|warm|technical|playful|elegant> to match this project's locked mood, "
+            "icons - pass --mood <premium|warm|technical|playful|elegant> to match this project's locked mood, "
             "or --set to name one directly.",
             file=sys.stderr,
         )
@@ -141,7 +141,7 @@ def main():
             return
         print(f"Icons matching '{args.search}' in '{args.icon_set}':")
         for n in names:
-            # results come back as "prefix:name" — strip prefix for reuse with --icons
+            # results come back as "prefix:name" - strip prefix for reuse with --icons
             print(f"  {n.split(':', 1)[-1]}")
         return
 
@@ -155,10 +155,10 @@ def main():
         try:
             svg = fetch_icon(args.icon_set, name, args.color, args.width)
             # Iconify returns a tiny error SVG (404-ish) for unknown names rather
-            # than an HTTP error — detect the empty/placeholder case by size.
+            # than an HTTP error - detect the empty/placeholder case by size.
             if len(svg) < 60:
                 failed.append(name)
-                print(f"[miss] {name} — not found in set '{args.icon_set}' (run --search to find the right name)")
+                print(f"[miss] {name} - not found in set '{args.icon_set}' (run --search to find the right name)")
                 continue
             dest = os.path.join(args.out, f"{name}.svg")
             with open(dest, "wb") as f:
@@ -166,11 +166,11 @@ def main():
             print(f"[ok]   {dest}")
         except Exception as e:
             failed.append(name)
-            print(f"[fail] {name} — {e}", file=sys.stderr)
+            print(f"[fail] {name} - {e}", file=sys.stderr)
 
     if failed:
         print(f"\n{len(failed)} icon(s) not fetched: {', '.join(failed)}. "
-              "These are attribution-free open sets, so a miss is just a wrong name — search first.")
+              "These are attribution-free open sets, so a miss is just a wrong name - search first.")
 
 
 if __name__ == "__main__":

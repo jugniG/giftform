@@ -4,14 +4,14 @@ Export a project's logo mark to standard favicon and OG-card sizes.
 
 Why this exists: `ideagram/scripts/export_png.py` covers illustration export
 at social/presentation sizes, but a logo mark (the output of
-`references/logo-sourcing.md`) needs a different, smaller set of sizes —
-favicon.ico, apple-touch-icon, and a manifest icon — that no other script in
+`references/logo-sourcing.md`) needs a different, smaller set of sizes -
+favicon.ico, apple-touch-icon, and a manifest icon - that no other script in
 this skill produces. Skipping this step is what leaves a generated site with
 a browser-default blank-page icon even though a real logo mark exists on disk.
 
 Requires cairosvg (pip install cairosvg) + Pillow, same as export_png.py.
 Degrades the same way: if either is missing, this says so plainly and exits
-nonzero rather than silently producing nothing — the source SVG remains
+nonzero rather than silently producing nothing - the source SVG remains
 usable directly in an <img> tag regardless.
 
 Usage:
@@ -122,7 +122,7 @@ def main():
         os.remove(temp_png)
         dest = os.path.join(args.out, "og-card.png")
         canvas.save(dest)
-        print(f"Exported {dest} ({w}x{h}) — a bare centered mark; if the OG card needs a wordmark/background too, compose that in code rather than relying on this alone.")
+        print(f"Exported {dest} ({w}x{h}) - a bare centered mark; if the OG card needs a wordmark/background too, compose that in code rather than relying on this alone.")
 
 
 if __name__ == "__main__":

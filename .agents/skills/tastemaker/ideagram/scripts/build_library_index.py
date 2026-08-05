@@ -4,7 +4,7 @@ Build a searchable index of a local unDraw library so matching a concept to
 an illustration is a fast, accurate lookup instead of eyeballing filenames.
 
 Why this exists: unDraw SVGs carry no per-file description (just an
-`artist`/`source` attribute) — the filename slug is the only real metadata
+`artist`/`source` attribute) - the filename slug is the only real metadata
 (e.g. `undraw_content-team_1p7b.svg` -> "content team"). This script extracts
 that slug into keywords, detects whether the file uses a secondary unDraw
 accent (green/pink/etc. beyond the main purple) worth remapping too, and
@@ -26,7 +26,7 @@ DEFAULT_LIBRARY = os.path.expanduser("~/.ideagram/undraw")
 
 # unDraw's known secondary ACCENT colors worth flagging for --also remapping.
 # Deliberately excludes unDraw's skin-tone variants (#9f616a, #a0616a, #ffb6b6,
-# #ed9da0, etc.) — those are skin, not a "pop" color, and must never be
+# #ed9da0, etc.) - those are skin, not a "pop" color, and must never be
 # offered as something to recolor.
 SECONDARY_ACCENTS = {
     "#8ed16f": "green",
@@ -81,24 +81,24 @@ def build_index(library):
             "group_count": figure_count_estimate(text),
         })
 
-    # JSON — machine-readable, for the skill to load directly
+    # JSON - machine-readable, for the skill to load directly
     json_path = os.path.join(library, "index.json")
     with open(json_path, "w") as jf:
         json.dump({"library": library, "count": len(entries), "illustrations": entries}, jf, indent=2)
 
-    # Markdown — human-scannable table, and hand-editable (add your own keywords)
+    # Markdown - human-scannable table, and hand-editable (add your own keywords)
     md_path = os.path.join(library, "index.md")
     lines = [
         "# unDraw library index",
         "",
-        f"{len(entries)} illustrations. Regenerate with `build_library_index.py` after adding new SVGs — "
+        f"{len(entries)} illustrations. Regenerate with `build_library_index.py` after adding new SVGs - "
         "or hand-edit the keywords column below; matching reads whichever is more specific.",
         "",
         "| File | Keywords | Secondary accent |",
         "|---|---|---|",
     ]
     for e in entries:
-        accents = ", ".join(e["secondary_accents"]) or "—"
+        accents = ", ".join(e["secondary_accents"]) or "-"
         lines.append(f"| `{e['file']}` | {' '.join(e['keywords'])} | {accents} |")
     with open(md_path, "w") as mf:
         mf.write("\n".join(lines) + "\n")

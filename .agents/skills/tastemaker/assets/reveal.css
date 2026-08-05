@@ -23,7 +23,7 @@
   transform: translateY(0);
 }
 
-/* Children of a data-reveal-group container stagger automatically —
+/* Children of a data-reveal-group container stagger automatically -
    reveal.js assigns each child a transition-delay based on its index. */
 [data-reveal-group] > * {
   opacity: 0;

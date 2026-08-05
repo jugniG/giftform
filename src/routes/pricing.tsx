@@ -38,7 +38,7 @@ function PricingPage() {
 
   async function triggerCheckout(plan: PlanId, inv: BillingInterval) {
     if (!session?.user) {
-      // Save intent, redirect to login — the login page resumes after auth
+      // Save intent, redirect to login - the login page resumes after auth
       sessionStorage.setItem('checkout_intent', JSON.stringify({ planId: plan, interval: inv }))
       navigate({ to: '/login', search: { callbackURL: '/pricing' } })
       return
@@ -197,7 +197,7 @@ function PricingPage() {
         </div>
       ) : (
         <p className="mt-10 text-center text-sm text-gray-400">
-          No active subscription — pick a plan above to get started.
+          No active subscription - pick a plan above to get started.
         </p>
       )}
 

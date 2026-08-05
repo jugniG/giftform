@@ -1,8 +1,8 @@
 # Interface quality rules
 
-The craft details that separate a page that *looks* designed from one that *is* built well. `references/anti-slop-checklist.md` catches output that reads as AI-generated; this file catches output that reads as amateur — broken keyboard access, layout shift, dead paste handlers, hardcoded date formats.
+The craft details that separate a page that *looks* designed from one that *is* built well. `references/anti-slop-checklist.md` catches output that reads as AI-generated; this file catches output that reads as amateur - broken keyboard access, layout shift, dead paste handlers, hardcoded date formats.
 
-Adapted from **Vercel's Web Interface Guidelines** (`github.com/vercel-labs/web-interface-guidelines`), which is the best public codification of this layer. Fetch the current version when it matters — it's actively maintained and this is a snapshot:
+Adapted from **Vercel's Web Interface Guidelines** (`github.com/vercel-labs/web-interface-guidelines`), which is the best public codification of this layer. Fetch the current version when it matters - it's actively maintained and this is a snapshot:
 
 ```
 https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md
@@ -46,11 +46,11 @@ Apply at **Step 4 (build)** and verify at the gate sweep. Framework-agnostic in 
 
 ## Animation
 
-These overlap with `references/animation-guidelines.md`'s motion gate and `scripts/audit_motion.py` — both should pass.
+These overlap with `references/animation-guidelines.md`'s motion gate and `scripts/audit_motion.py` - both should pass.
 
 - Respect `prefers-reduced-motion`.
 - Animate `transform` and `opacity` only (compositor-friendly).
-- **Never `transition: all`** — list properties explicitly.
+- **Never `transition: all`** - list properties explicitly.
 - Set an intentional `transform-origin`.
 - SVG: transform a `<g>` wrapper with `transform-box: fill-box; transform-origin: center`.
 - Animations must be interruptible and respond to input mid-flight.
@@ -68,7 +68,7 @@ These overlap with `references/animation-guidelines.md`'s motion gate and `scrip
 
 - Text containers handle overflow: `truncate`, `line-clamp-*`, or `break-words`.
 - Flex children need `min-w-0` for truncation to work at all.
-- Design the empty state — don't render broken UI for an empty array.
+- Design the empty state - don't render broken UI for an empty array.
 - Test copy at short, medium, and very long. Real user content is not one line.
 
 ## Images
@@ -88,7 +88,7 @@ These overlap with `references/animation-guidelines.md`'s motion gate and `scrip
 
 ## Navigation & state
 
-- **URL reflects state** — filters, tabs, pagination, expanded panels belong in query params.
+- **URL reflects state** - filters, tabs, pagination, expanded panels belong in query params.
 - Navigation uses real `<a>`/`<Link>` so Cmd-click and middle-click work.
 - Deep-link stateful UI.
 - Destructive actions get a confirmation or an undo window. Never immediate.
@@ -99,7 +99,7 @@ These overlap with `references/animation-guidelines.md`'s motion gate and `scrip
 - Set `-webkit-tap-highlight-color` deliberately.
 - Modals/drawers use `overscroll-behavior: contain`.
 - While dragging: disable text selection, mark the dragged element `inert`.
-- `autoFocus` sparingly — desktop only, one primary input, never on mobile.
+- `autoFocus` sparingly - desktop only, one primary input, never on mobile.
 
 ## Layout & safe areas
 
@@ -109,7 +109,7 @@ These overlap with `references/animation-guidelines.md`'s motion gate and `scrip
 
 ## Theming
 
-- `color-scheme: dark` on `<html>` for dark themes — fixes native scrollbars and inputs.
+- `color-scheme: dark` on `<html>` for dark themes - fixes native scrollbars and inputs.
 - `<meta name="theme-color">` matches the page background.
 - Native `<select>` needs explicit `background-color` and `color` (Windows dark mode).
 
@@ -128,7 +128,7 @@ These overlap with `references/animation-guidelines.md`'s motion gate and `scrip
 ## Interactive states
 
 - Buttons and links need a `hover:` state.
-- Hover/active/focus increase contrast relative to rest — see `references/style-tokens.md`'s contrast floor; a hover state that drops below the floor is a real failure, not a style choice.
+- Hover/active/focus increase contrast relative to rest - see `references/style-tokens.md`'s contrast floor; a hover state that drops below the floor is a real failure, not a style choice.
 
 ## Copy
 

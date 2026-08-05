@@ -22,7 +22,7 @@ import { authClient } from '#/lib/auth-client'
 import { getSession } from '#/lib/session'
 
 // ---------------------------------------------------------------------------
-// Auth guard — redirect to /login if no session
+// Auth guard - redirect to /login if no session
 // ---------------------------------------------------------------------------
 export const Route = createFileRoute('/_protected')({
   beforeLoad: async () => {
@@ -71,12 +71,12 @@ function ProtectedLayout() {
           wrapper: 'mx-auto max-w-6xl px-4 sm:px-6',
         }}
       >
-        {/* Brand — click to dashboard */}
+        {/* Brand - click to dashboard */}
         <NavbarBrand>
           <Logo to="/dashboard" size="sm" />
         </NavbarBrand>
 
-        {/* Right — user dropdown */}
+        {/* Right - user dropdown */}
         <NavbarContent justify="end">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>

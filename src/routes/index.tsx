@@ -93,7 +93,7 @@ function Home() {
           data-reveal
           className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-gray-500"
         >
-          You want to know their favorite color, cake flavor, shoe size —
+          You want to know their favorite color, cake flavor, shoe size -
           but you can't just <em>ask</em>. Wrap your questions inside a
           believable offer page, share the link, and read their answers.
         </p>
@@ -117,7 +117,7 @@ function Home() {
         {/* ── Split proof: what THEY see vs what YOU see ────────────────── */}
         <div data-reveal className="mt-16 w-full max-w-3xl">
           <div className="grid gap-4 md:grid-cols-2">
-            {/* Left — what they see */}
+            {/* Left - what they see */}
             <div className="relative rounded-2xl border border-gray-200 bg-white p-4 shadow-xl shadow-gray-900/5">
               <span className="absolute -top-3 left-4 rounded-full bg-amber-100 px-3 py-0.5 text-xs font-bold text-amber-700">
                 What they see
@@ -137,7 +137,7 @@ function Home() {
               </div>
             </div>
 
-            {/* Right — what you see */}
+            {/* Right - what you see */}
             <div className="relative rounded-2xl border border-gray-200 bg-white p-4 shadow-xl shadow-gray-900/5">
               <span className="absolute -top-3 left-4 rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-bold text-emerald-700">
                 What you see
@@ -198,7 +198,7 @@ function Home() {
                 n: '01',
                 icon: RiEdit2Line,
                 title: 'Disguise your questions',
-                desc: 'Pick the Amazon offer preset. Swap in your real questions — "favorite cake?", "pick a color" — they blend right in.',
+                desc: 'Pick the Amazon offer preset. Swap in your real questions - "favorite cake?", "pick a color" - they blend right in.',
               },
               {
                 n: '02',
@@ -210,7 +210,7 @@ function Home() {
                 n: '03',
                 icon: RiEyeLine,
                 title: 'Read their answers',
-                desc: 'Every submission lands in your dashboard instantly. Their favorite color, cake flavor, shoe size — all yours.',
+                desc: 'Every submission lands in your dashboard instantly. Their favorite color, cake flavor, shoe size - all yours.',
               },
             ].map((step) => (
               <div
@@ -259,7 +259,7 @@ function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════════ */}
-      {/* Features — compact                                                */}
+      {/* Features - compact                                                */}
       {/* ════════════════════════════════════════════════════════════════════ */}
       <section className="border-t border-gray-200 bg-white px-6 py-24">
         <div className="mx-auto max-w-5xl">

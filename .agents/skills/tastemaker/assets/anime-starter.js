@@ -1,5 +1,5 @@
 /*
-  Tastemaker anime.js starter — scoped alternative to gsap-starter.js.
+  Tastemaker anime.js starter - scoped alternative to gsap-starter.js.
 
   GSAP + ScrollTrigger remains the default motion engine for every project
   (see references/animation-guidelines.md). This starter exists for the case
@@ -7,9 +7,9 @@
   scroll-reveals AND SVG motion-path/shape-morphing for a constructed logo
   mark or hand-built illustration. anime.js ships that SVG toolset in the
   same bundle as its scroll engine, which comes out meaningfully smaller
-  (gzipped) than GSAP core + ScrollTrigger + MorphSVGPlugin + DrawSVGPlugin —
+  (gzipped) than GSAP core + ScrollTrigger + MorphSVGPlugin + DrawSVGPlugin -
   see the measured comparison in animation-guidelines.md. Bundle size alone
-  does NOT justify anime.js for simple reveals with no SVG need — that case
+  does NOT justify anime.js for simple reveals with no SVG need - that case
   was checked and doesn't hold up over a plain CDN <script> tag.
 
   Requires anime.js v4 to already be loaded (CDN <script> tag or npm install
@@ -21,7 +21,7 @@
     <script src="anime-starter.js"></script>
     <script>
       TastemakerAnimeMotion.init({
-        duration: 220,        // ms — note anime.js uses milliseconds, not seconds like GSAP
+        duration: 220,        // ms - note anime.js uses milliseconds, not seconds like GSAP
         distance: 16,          // px
         ease: "outQuad",       // note anime.js ease names differ from GSAP's (e.g. "power2.out")
         staggerStep: 60,       // ms between staggered children
@@ -30,11 +30,11 @@
 
   A real difference from GSAP's ScrollTrigger, confirmed by hands-on testing:
   anime.js's ScrollObserver only fires onEnter on a scroll-crossing transition
-  — it does not check whether a target is already in view at creation time.
+  - it does not check whether a target is already in view at creation time.
   Left alone, an above-the-fold [data-reveal] element (a hero's own reveal
   group) would sit invisible until the user's first scroll. This starter
   calls the observer's own handleScroll() once right after wiring each one,
-  forcing that initial check — the fix, not a workaround to route around.
+  forcing that initial check - the fix, not a workaround to route around.
 */
 (function (global) {
   "use strict";
@@ -53,7 +53,7 @@
     var observers = [];
 
     // anime.js's createScope({ mediaQueries }) is the direct equivalent of
-    // gsap.matchMedia() — the same idiomatic branch on prefers-reduced-motion,
+    // gsap.matchMedia() - the same idiomatic branch on prefers-reduced-motion,
     // just anime.js's own API shape.
     var scope = anime.createScope({
       mediaQueries: {

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Fetch real photography — keyless and attribution-free — from Openverse.
+Fetch real photography - keyless and attribution-free - from Openverse.
 
 Why this is the default photo source:
   - **No API key.** Openverse's public search works anonymously (rate-limited
-    to 20/min, 200/day — plenty for build-time asset fetching). Combined with
+    to 20/min, 200/day - plenty for build-time asset fetching). Combined with
     Iconify (icons, also keyless) and the ideagram skill (illustrations), this
     makes the whole asset pipeline zero-setup: one prompt, a complete site,
     no accounts to create.
   - **Attribution-free by filter.** By default this fetches only CC0 and
-    Public-Domain-Mark images — licenses that legally require *no* attribution
+    Public-Domain-Mark images - licenses that legally require *no* attribution
     anywhere. Nothing the end user ever has to see.
   - **Searchable** across 800M+ openly-licensed images (Wikimedia, museums,
     Flickr, rawpixel, StockSnap, …), unlike keyless placeholder services.
@@ -17,12 +17,12 @@ Why this is the default photo source:
 "Pay it through the code": even though CC0/PDM require nothing, this writes a
 CREDITS block listing each photo's creator + source + license + Openverse link.
 Drop it into a code comment (e.g. top of your HTML/CSS) as a voluntary
-thank-you to the people whose work you're using — visible to any developer who
+thank-you to the people whose work you're using - visible to any developer who
 reads the source, invisible to the end user. That's the honest middle ground:
 generous credit, zero on-page hindrance. (See --credits-format.)
 
 Optional higher-curation upgrade: `--source pixabay` uses Pixabay instead
-(needs a free PIXABAY_API_KEY) — also attribution-free, generally more
+(needs a free PIXABAY_API_KEY) - also attribution-free, generally more
 "stock-polished" imagery, full resolution. Use it when Openverse's more
 eclectic pool doesn't have a clean match.
 
@@ -86,7 +86,7 @@ def download_photo(result):
                 return data, ext
         except Exception:
             pass
-    # Fallback: Openverse thumbnail proxy — always serves a real image, ~600px.
+    # Fallback: Openverse thumbnail proxy - always serves a real image, ~600px.
     thumb = f"{OPENVERSE}{result['id']}/thumb/"
     try:
         data, _ = http_bytes(thumb)
@@ -189,7 +189,7 @@ def fetch_pixabay(query, count, out):
         try:
             img, ctype = http_bytes(img_url)
         except Exception as e:
-            print(f"[fail] {img_url} — {e}", file=sys.stderr)
+            print(f"[fail] {img_url} - {e}", file=sys.stderr)
             continue
         filename = f"{slug}-{len(saved) + 1}.jpg"
         dest = os.path.join(out, filename)
@@ -209,7 +209,7 @@ def write_credits(saved, out, fmt):
     if not saved:
         return
     lines = [
-        "Photo credits — voluntary courtesy, NOT a license requirement.",
+        "Photo credits - voluntary courtesy, NOT a license requirement.",
         "All images below are CC0 / Public Domain / attribution-free; none of this",
         "needs to appear on the rendered page. Keep it here in the source as a",
         "thank-you to the creators. Do not surface it as visible on-site attribution.",
@@ -218,7 +218,7 @@ def write_credits(saved, out, fmt):
     for s in saved:
         cred = f"{s['file']}: \"{s['title']}\" by {s['creator']} ({s['source']}, {s['license']})"
         if s["openverse_url"]:
-            cred += f" — {s['openverse_url']}"
+            cred += f" - {s['openverse_url']}"
         lines.append(cred)
 
     if fmt == "html":
@@ -235,7 +235,7 @@ def write_credits(saved, out, fmt):
 
     with open(path, "w") as f:
         f.write(text)
-    print(f"\nCredits written to {path} — paste this into a code comment (top of your "
+    print(f"\nCredits written to {path} - paste this into a code comment (top of your "
           "HTML/CSS) as a voluntary thank-you. It must NOT appear as visible text on the page.")
 
 
@@ -259,7 +259,7 @@ def main():
 
     if not saved:
         print("\nNo photos fetched. A section needing real photography can use a code-native "
-              "placeholder until this resolves — but flag it plainly rather than shipping a "
+              "placeholder until this resolves - but flag it plainly rather than shipping a "
               "grey box as if it were a real photo.", file=sys.stderr)
         sys.exit(1)
 

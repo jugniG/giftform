@@ -4,7 +4,7 @@ Extract a whole component (a figure, a device, a background panel) from a real
 unDraw SVG into a standalone SVG you can reuse and recolor.
 
 Reusing a whole component is the reliable way to build a NEW scene at genuine
-unDraw quality (see references/undraw-anatomy.md) — the extracted paths are the
+unDraw quality (see references/undraw-anatomy.md) - the extracted paths are the
 illustrator's real work, untouched.
 
 How it works: unDraw components are `<g transform="translate(...)">` groups. This
@@ -21,7 +21,7 @@ Then extract by a match string (e.g. the translate of the figure group):
     python3 extract_component.py source.svg --match "translate(626.584 516.463)" --out figure.svg
 
 Tip: after extracting, render it in a browser and read the group's getBBox()
-to set a tight viewBox — nested transforms make eyeballing the bounds wrong.
+to set a tight viewBox - nested transforms make eyeballing the bounds wrong.
 """
 
 import sys
@@ -102,7 +102,7 @@ def main():
 
     dest = args.out or (args.source.rsplit(".", 1)[0] + "-component.svg")
     open(dest, "w").write(out_svg)
-    print(f"[ok] {dest} — extracted. Render it and read getBBox() on the group to set a tight viewBox, "
+    print(f"[ok] {dest} - extracted. Render it and read getBBox() on the group to set a tight viewBox, "
           "then place it in your composition with a <g transform> and recolor with recolor_undraw.py.")
 
 

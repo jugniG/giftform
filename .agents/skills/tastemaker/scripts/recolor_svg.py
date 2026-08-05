@@ -2,7 +2,7 @@
 """
 Recolor local SVG files to match the project's locked palette.
 
-This operates only on SVG files already sitting on disk — files the user
+This operates only on SVG files already sitting on disk - files the user
 downloaded themselves (e.g. from unDraw's own gallery, or an icon set).
 It does not fetch, scrape, or search anything remote. That distinction
 matters: unDraw's license explicitly prohibits automated
@@ -18,7 +18,7 @@ one consistent accent color.
 Usage:
     python3 recolor_svg.py <svg_path_or_dir> --accent "#C9A227" [--preserve-dark]
 
-    --preserve-dark   Leave near-black (#000-#333 range) fills/strokes alone —
+    --preserve-dark   Leave near-black (#000-#333 range) fills/strokes alone -
                        useful for line-art icons where only the accent fill
                        should change and outlines should stay dark.
 """
@@ -93,14 +93,14 @@ def main():
     for path in files:
         new_text, count = recolor_file(path, args.accent, args.preserve_dark)
         if count == 0:
-            print(f"[skip] {path} — no matching fill/stroke colors found")
+            print(f"[skip] {path} - no matching fill/stroke colors found")
             continue
         if args.dry_run:
-            print(f"[dry-run] {path} — would recolor {count} attribute(s) to {args.accent}")
+            print(f"[dry-run] {path} - would recolor {count} attribute(s) to {args.accent}")
         else:
             with open(path, "w", encoding="utf-8") as f:
                 f.write(new_text)
-            print(f"[done] {path} — recolored {count} attribute(s) to {args.accent}")
+            print(f"[done] {path} - recolored {count} attribute(s) to {args.accent}")
 
 
 if __name__ == "__main__":
