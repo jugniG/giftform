@@ -13,8 +13,6 @@ import {
 import {
   RiDashboardLine,
   RiLogoutBoxLine,
-  RiSettingsLine,
-  RiUserLine,
   RiPriceTag3Line,
 } from 'react-icons/ri'
 import { Logo } from '#/components/Logo'
@@ -159,20 +157,6 @@ function ProtectedLayout() {
                   onPress={() => router.navigate({ to: '/pricing' })}
                 >
                   Pricing
-                </DropdownItem>
-                <DropdownItem
-                  key="profile"
-                  startContent={<RiUserLine className="text-base text-gray-500" />}
-                  onPress={() => router.navigate({ to: '/dashboard' })}
-                >
-                  Profile
-                </DropdownItem>
-                <DropdownItem
-                  key="settings"
-                  startContent={<RiSettingsLine className="text-base text-gray-500" />}
-                  onPress={() => router.navigate({ to: '/dashboard' })}
-                >
-                  Settings
                 </DropdownItem>
               </DropdownSection>
 

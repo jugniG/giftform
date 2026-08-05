@@ -25,7 +25,10 @@ import {
   RiEditLine,
   RiBarChartBoxLine,
   RiDeleteBinLine,
+  RiFileCopyLine,
+  RiExternalLinkLine,
 } from 'react-icons/ri'
+import { getOfferUrl } from '#/lib/forms'
 
 export const Route = createFileRoute('/_protected/dashboard')({
   component: DashboardPage,
@@ -43,7 +46,15 @@ function DashboardPage() {
   const router = useRouter()
   const queryClient = useQueryClient()
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
+  const [copiedId, setCopiedId] = useState<string | null>(null)
   const [serverError, setServerError] = useState<string | null>(null)
+
+  const handleCopyLink = (formId: string) => {
+    const url = getOfferUrl(formId)
+    navigator.clipboard.writeText(url)
+    setCopiedId(formId)
+    setTimeout(() => setCopiedId(null), 2000)
+  }
 
   const name = user?.name ?? user?.email ?? 'there'
 
@@ -162,44 +173,70 @@ function DashboardPage() {
                   <span className="font-bold text-gray-900">{form._count?.submissions ?? 0}</span>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <Button
-                    as={Link}
-                    to="/forms/$formId"
-                    params={{ formId: form.id }}
-                    size="sm"
-                    variant="bordered"
-                    className="flex-1"
-                    startContent={<RiEditLine />}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    as={Link}
-                    to="/forms/$formId/responses"
-                    params={{ formId: form.id }}
-                    size="sm"
-                    color="primary"
-                    variant="flat"
-                    className="flex-1"
-                    startContent={<RiBarChartBoxLine />}
-                  >
-                    Responses
-                  </Button>
-                  <Button
-                    size="sm"
-                    color="danger"
-                    variant="light"
-                    isIconOnly
-                    isLoading={deleteFormMutation.isPending}
-                    onPress={() => {
-                      if (confirm('Are you sure you want to delete this form?')) {
-                        deleteFormMutation.mutate({ id: form.id })
-                      }
-                    }}
-                  >
-                    <RiDeleteBinLine />
-                  </Button>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <Button
+                      as={Link}
+                      to="/forms/$formId"
+                      params={{ formId: form.id }}
+                      size="sm"
+                      variant="bordered"
+                      className="flex-1"
+                      startContent={<RiEditLine />}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      as={Link}
+                      to="/forms/$formId/responses"
+                      params={{ formId: form.id }}
+                      size="sm"
+                      color="primary"
+                      variant="flat"
+                      className="flex-1"
+                      startContent={<RiBarChartBoxLine />}
+                    >
+                      Responses
+                    </Button>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="sm"
+                      variant="bordered"
+                      className="flex-1"
+                      startContent={<RiFileCopyLine />}
+                      onPress={() => handleCopyLink(form.id)}
+                    >
+                      {copiedId === form.id ? 'Copied!' : 'Copy Link'}
+                    </Button>
+                    <Button
+                      as="a"
+                      href={getOfferUrl(form.id)}
+                      target="_blank"
+                      rel="noreferrer"
+                      size="sm"
+                      color="secondary"
+                      variant="flat"
+                      isIconOnly
+                      title="Open Live Form"
+                    >
+                      <RiExternalLinkLine />
+                    </Button>
+                    <Button
+                      size="sm"
+                      color="danger"
+                      variant="light"
+                      isIconOnly
+                      isLoading={deleteFormMutation.isPending}
+                      onPress={() => {
+                        if (confirm('Are you sure you want to delete this form?')) {
+                          deleteFormMutation.mutate({ id: form.id })
+                        }
+                      }}
+                    >
+                      <RiDeleteBinLine />
+                    </Button>
+                  </div>
                 </div>
               </CardBody>
             </Card>

@@ -152,7 +152,7 @@ function PublicAmazonFormPage() {
                         required={field.required}
                         onChange={(e) => setFormData({ ...formData, [field.id]: e.target.value })}
                       >
-                        {(field.options || []).map((opt) => (
+                        {(field.options || []).map((opt: string) => (
                           <SelectItem key={opt}>{opt}</SelectItem>
                         ))}
                       </Select>

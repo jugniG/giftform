@@ -7,6 +7,7 @@ import { orpc } from '#/orpc/client'
 import { Input } from '#/components/Input'
 import { Button } from '#/components/Button'
 import type { FormField } from '#/lib/forms'
+import { getOfferUrl } from '#/lib/forms'
 import {
   RiAddLine,
   RiDeleteBinLine,
@@ -114,7 +115,7 @@ function FormBuilderPage() {
           </Button>
           <Button
             as="a"
-            href={`/offers/${formId}`}
+            href={getOfferUrl(formId)}
             target="_blank"
             rel="noreferrer"
             color="secondary"
@@ -138,7 +139,7 @@ function FormBuilderPage() {
 
       {savedSuccess && (
         <div className="mb-6 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-          Form saved successfully! Share link: <strong>{window.location.origin}/offers/{formId}</strong>
+          Form saved successfully! Share link: <strong>{getOfferUrl(formId)}</strong>
         </div>
       )}
 

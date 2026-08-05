@@ -3,6 +3,7 @@ import { Card, CardBody, CardHeader, Chip } from '@heroui/react'
 import { useQuery } from '@tanstack/react-query'
 import { orpc } from '#/orpc/client'
 import { Button } from '#/components/Button'
+import { getOfferUrl } from '#/lib/forms'
 import type { FormField } from '#/lib/forms'
 import { RiArrowLeftLine, RiExternalLinkLine, RiEditLine } from 'react-icons/ri'
 
@@ -51,7 +52,7 @@ function FormResponsesPage() {
           </Button>
           <Button
             as="a"
-            href={`/offers/${formId}`}
+            href={getOfferUrl(formId)}
             target="_blank"
             rel="noreferrer"
             color="secondary"
@@ -82,7 +83,7 @@ function FormResponsesPage() {
           </p>
           <div className="mt-4">
             <span className="rounded bg-gray-100 px-3 py-1.5 font-mono text-xs text-gray-800">
-              {window.location.origin}/offers/{formId}
+              {getOfferUrl(formId)}
             </span>
           </div>
         </Card>
