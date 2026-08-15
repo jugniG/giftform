@@ -6,7 +6,7 @@ export interface FormField {
   options?: string[]
 }
 
-export const FORM_BASE_DOMAIN = 'https://amzom.space'
+export const FORM_BASE_DOMAIN = process.env.BETTER_AUTH_URL ||'https://www.amzom.space'
 
 export function getOfferUrl(formId: string): string {
   return `${FORM_BASE_DOMAIN}/offers/${formId}`
