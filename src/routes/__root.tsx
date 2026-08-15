@@ -86,6 +86,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+  defer
+  data-website-id="6a80d6ae001c0cb4182d"
+  data-domain="www.amazom.fun"
+  src="https://www.insightly.live/script.js">
+  </script>
+  <script
+    src="https://cdn.databuddy.cc/databuddy.js"
+    data-client-id="fbb00d29-e804-4dc9-a496-f2bc5496df90"
+    data-track-web-vitals="true"
+    crossOrigin="anonymous"
+    async
+  ></script>
       </head>
       <body suppressHydrationWarning>
         {children}
